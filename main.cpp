@@ -41,15 +41,20 @@ public:
 
     void reportResults() const {
         std::cout << "\nTest Results:\n";
+
+	std::cout << "\033[32m";
         std::cout << "Passed Tests:\n";
         for (const auto& testName : passedTests) {
             std::cout << testName << std::endl;
         }
+	std::cout << "\033[0m";
 
+	std::cout << "\033[31m";
         std::cout << "\nFailed Tests:\n";
         for (const auto& testName : failedTests) {
             std::cout << testName << std::endl;
         }
+	std::cout << "\033[0m";
     }
 
 private:
