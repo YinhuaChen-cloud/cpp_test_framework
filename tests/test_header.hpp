@@ -1,3 +1,0 @@
-
-extern void test1();
-

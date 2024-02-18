@@ -28,8 +28,14 @@ public:
     }
 
     void runTests() {
+
+	int num = 1;
+
         for (auto& test : tests) {
             try {
+
+		std::cout << "Running Test " << num << " ......" << std::endl;
+
                 test->run();
                 std::cout << "Test Passed: " << test->getName() << std::endl;
                 passedTests.push_back(test->getName());
@@ -72,7 +78,7 @@ public:
     void run() override {
         // 这里放置测试逻辑
         // 如果测试失败，可以抛出异常
-	test1();
+        test1();
     }
 };
 

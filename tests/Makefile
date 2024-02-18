@@ -12,6 +12,7 @@ archive: $(ALL_TESTS)
 # 循环调用子目录下的Makefile
 .PHONY: $(ALL_TESTS)
 $(ALL_TESTS):
+	@echo "HEADERS = $(HEADERS)"
 	make -C $@ $@
 	cp $@/$@.o .
 	
