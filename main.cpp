@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <test_header.hpp>
 
 // 测试用例类
 class TestCase {
@@ -71,6 +72,7 @@ public:
     void run() override {
         // 这里放置测试逻辑
         // 如果测试失败，可以抛出异常
+	test1();
     }
 };
 
