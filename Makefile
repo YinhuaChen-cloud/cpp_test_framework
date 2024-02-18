@@ -15,5 +15,6 @@ test.a:
 .PHONY: clean
 clean: 
 	-@rm -f *.o a.out test main *.a
+	make -C tests clean
 
 
