@@ -1,20 +1,18 @@
-# ALL_TESTS=test1 test2 test3
-ALL_TESTS=test1
+ALL_TESTS=test2
 
 # 使用 foreach 函数添加 _clean
 CLEAN_ALL := $(foreach mod,$(ALL_TESTS),$(mod)_clean)
 
+.PHONY: archive
 archive: $(ALL_TESTS)
 	@echo "In archive"
-	ar rcs test.a *.o 
-
 
 # 循环调用子目录下的Makefile
 .PHONY: $(ALL_TESTS)
 $(ALL_TESTS):
 	@echo "HEADERS = $(HEADERS)"
 	make -C $@ $@
-	cp $@/$@.o .
+	cp $@/$@.a .
 	
 
 .PHONY: clean

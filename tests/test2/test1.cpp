@@ -106,7 +106,7 @@ void test1() {
 
     TopLevel top;
 
-    load_top(&top, "./cfg_bin/base64_cfg.bin");
+    load_top(&top, "base64_cfg.bin");
     // dump_top(&top);
 
     // 测试能否加载 base64 CFG

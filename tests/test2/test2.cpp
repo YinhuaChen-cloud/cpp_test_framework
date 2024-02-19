@@ -102,24 +102,33 @@ void load_top(TopLevel *top, const char *path) {
     }
 }
 
-void test1() {
+// int main() {
+void test2() {
 
     TopLevel top;
 
-    load_top(&top, "./cfg_bin/base64_cfg.bin");
-    // dump_top(&top);
+    int path_loop_15[] = {0, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 2, 6, 24, 25, 26, 27, 29, 33, 34, 25, 26, 30, 32, 33, 34, 25, 26, 27, 29, 33, 34, 25, 35, 8, 9, 10, 1, 2, 3, 12, 13, 14, 15, 17, 21, 22, 13, 14, 18, 20, 21, 22, 13, 14, 15, 17, 21, 22, 13, 23, 5, 9, 10, 1, 11};
 
-    // 测试能否加载 base64 CFG
+    load_top(&top, "./cfg_bin/test2_cfg.bin");
+    dump_top(&top);
+
+    // 测试能否加载 test2_cfg.bin CFG
+    printf("Before get_path_reducer ------------- start\n");
     PathReducer* pathreducer = get_path_reducer(&top, 10);
+    printf("After get_path_reducer ------------- end\n");
 
-    // printf("path_size = %d\n", sizeof(path)/sizeof(path[0]));
-    // printf("before running function 'path_reducer_free'\n");
-    // free_path_reducer(pathreducer);
-    // printf("after running function 'path_reducer_free'\n");
+    // Reduces a path, and gets the hash
+    // const char* reduce_path(const PathReducer* reducer, const BlockID* path, int32_t path_size, FunID entry_fun_id);
+    printf("Before reduce_path --------------- start\n");
+    printf("path_size = %ld\n", sizeof(path_loop_15)/sizeof(path_loop_15[0]));
+    char *pathHash = (char *) reduce_path(pathreducer, (int *) path_loop_15, sizeof(path_loop_15)/sizeof(path_loop_15[0]), 0);
+    printf("After reduce_path --------------- end\n");
+
+    // 测试能否释放 pathreducer
+    printf("Before running function 'path_reducer_free' ------------- start\n");
+    free_path_reducer(pathreducer);
+    printf("After running function 'path_reducer_free' ------------- end\n");
 
 }
-
-
-
 
 

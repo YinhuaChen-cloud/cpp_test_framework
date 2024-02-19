@@ -78,7 +78,7 @@ public:
     void run() override {
         // 这里放置测试逻辑
         // 如果测试失败，可以抛出异常
-        test1();
+        // test1();
     }
 };
 
@@ -88,7 +88,8 @@ public:
 
     void run() override {
         // 测试逻辑
-        throw std::runtime_error("Example failure");
+	test2();
+        // throw std::runtime_error("Example failure");
     }
 };
 // 具体的测试用例 -------------------------------------------------------- end
